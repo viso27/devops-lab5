@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    environment {
+        STREAMLIT_SUPPRESS_PROMPT = 'true'
+    }
+
+    stages {
+
+        stage('Clone Repo') {
+            steps {
+                git 'https://github.com/YOUR_USERNAME/weather-streamlit-app.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Streamlit App') {
+            steps {
+                bat 'streamlit run streamlit_app.py --server.headless true'
+            }
+        }
+
+    }
+}
