@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 
 st.title("🌦 Weather App")
+st.write("Heelo")
 
 city = st.text_input("Enter City Name")
 
@@ -21,5 +22,7 @@ if st.button("Get Weather"):
         st.success(f"Temperature: {temp} °C")
         st.info(f"Humidity: {humidity}%")
         st.write(f"Weather: {weather}")
+        
     else:
+
         st.error("City not found")
